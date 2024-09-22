@@ -4,7 +4,8 @@ import { useBookStore } from "../stores/useBookStore";
 import Spinner from "../components/Spinner";
 import BookItem from "../components/BookItem";
 import { useEffect } from "react";
-import { BookA, Pen, Album, Calendar, Hash } from "lucide-react";
+import { BookA, Pen, Album, Calendar, Hash, Frown } from "lucide-react";
+import DownloadData from "../components/DownloadData";
 
 const ViewBooks = () => {
   const { loading: isLoading, books, getAllBooks } = useBookStore();
@@ -23,7 +24,6 @@ const ViewBooks = () => {
       </h1>
       <FilterBy />
       <div className="max-w-full bg-gray-700 bg-opacity-25 sm:px-4 px-2 py-2  space-y-3 rounded-sm">
-        {isLoading && <Spinner />}
         <div className="sm:text-base bg-gray-700 text-xs font-medium text-white min-w-full flex items-center justify-between divide-x divide-emerald-100 pb-1 divide-opacity-15 bg-opacity-5 rounded-md border-b border-gray-700">
           <div className="uppercase w-full px-2 py-2 flex justify-center">
             <BookA className="w-6 h-6 mr-1 sm:inline-block hidden" />
@@ -47,12 +47,30 @@ const ViewBooks = () => {
           </div>
         </div>
         <div className="space-y-3 divide-y-2 divide-emerald-700 overflow-y-auto max-h-72">
-          {books?.length > 0 ? (
+          {!isLoading ? (
             books.map((book) => <BookItem key={book.id} book={book} />)
           ) : (
-            <>Devansh</>
+            <>
+              <Spinner />
+            </>
+          )}
+          {books?.length === 0 && (
+            <div className="w-full mt-2 p-2 bg-gray-700 bg-opacity-25 rounded-md ">
+              <Frown className="mb-1 sm:block hidden w-full" size={40} />
+              <p className="text-emerald-500 text-4xl tracking-tight font-bold text-center">
+                No Books Found...
+              </p>
+            </div>
           )}
         </div>
+        {!isLoading && books?.length > 0 && (
+          <div className="w-full mt-2 p-2 bg-gray-700 bg-opacity-25 rounded-md flex items-center justify-between">
+            <p className="text-white text-sm uppercase tracking-tight font-bold">
+              Download Data in CSV-Format
+            </p>
+            <DownloadData data={books} />
+          </div>
+        )}
       </div>
     </motion.div>
   );

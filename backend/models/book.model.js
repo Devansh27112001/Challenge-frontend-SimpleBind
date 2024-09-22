@@ -21,8 +21,8 @@ const bookSchema = sequelize.define("Book", {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      isAlpha: {
-        args: true,
+      is: {
+        args: /^[a-zA-Z ]*$/,
         msg: "Title of the book should only contain alphabets",
       },
     },
@@ -32,9 +32,9 @@ const bookSchema = sequelize.define("Book", {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      isAlpha: {
-        args: true,
-        msg: "Author of the book should only contain alphabets",
+      is: {
+        args: /^[a-zA-Z ]*$/,
+        msg: "Auhtor of the book should only contain alphabets",
       },
     },
   },

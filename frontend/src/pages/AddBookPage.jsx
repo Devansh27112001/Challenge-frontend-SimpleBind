@@ -139,7 +139,7 @@ const AddBookPage = () => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    genre: e.target.value.toLowerCase(),
+                    genre: e.target.value,
                   })
                 }
               >
