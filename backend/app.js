@@ -2,7 +2,6 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import bookRouter from "./routes/book.route.js";
-import userRouter from "./routes/user.route.js";
 
 const app = express();
 
@@ -14,6 +13,5 @@ app.use(express.json({ limit: "50mb" }));
 
 // Routes
 app.use("/api/book", bookRouter);
-app.use("/user", userRouter);
 
 export default app;

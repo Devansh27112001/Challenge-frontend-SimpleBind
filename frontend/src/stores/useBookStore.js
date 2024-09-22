@@ -26,6 +26,7 @@ export const useBookStore = create((set, get) => ({
     set({ loading: true });
     try {
       const res = await axiosInstance.get("/book");
+      console.log(res.data.books);
       set({ books: res.data.books, loading: false });
     } catch (error) {
       set({ loading: false });

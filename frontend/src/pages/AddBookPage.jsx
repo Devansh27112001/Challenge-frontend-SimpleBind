@@ -137,7 +137,10 @@ const AddBookPage = () => {
                 required
                 value={formData.genre}
                 onChange={(e) =>
-                  setFormData({ ...formData, genre: e.target.value })
+                  setFormData({
+                    ...formData,
+                    genre: e.target.value.toLowerCase(),
+                  })
                 }
               >
                 <option value={""}>Select Genre</option>

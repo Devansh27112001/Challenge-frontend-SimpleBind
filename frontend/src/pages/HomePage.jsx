@@ -1,14 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRightFromLineIcon } from "lucide-react";
 import { motion } from "framer-motion";
-import { useBookStore } from "../stores/useBookStore";
-import { useEffect } from "react";
 const HomePage = () => {
-  const { getAllBooks } = useBookStore();
-
-  useEffect(() => {
-    getAllBooks();
-  }, []);
   return (
     <motion.div
       className="w-full h-full max-w-7xl mx-auto pt-20 z-50 relative mt-20"

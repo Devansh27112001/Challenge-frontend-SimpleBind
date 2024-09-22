@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FilterValueInput from "./FilterValueInput";
 
 const FilterBy = () => {
   const [filter, setFilter] = useState({ option: "", value: "" });
@@ -27,18 +28,7 @@ const FilterBy = () => {
           <option value="publicationDate">Publication Date</option>
           <option value="author">Author</option>
         </select>
-
-        <input
-          className="bg-gray-700 border border-gray-600 rounded-md shadow-sm py-1 px-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
-          placeholder="Enter the value"
-          value={filter.value}
-          onChange={(e) => {
-            setFilter({
-              ...filter,
-              value: e.target.value,
-            });
-          }}
-        />
+        <FilterValueInput filter={filter} handleFilterValue={setFilter} />
       </div>
       <div>
         <button
