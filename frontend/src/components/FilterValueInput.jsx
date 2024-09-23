@@ -6,6 +6,7 @@ import { genres } from "../lib/data";
 const FilterValueInput = ({ filter, handleFilterValue }) => {
   const textInput = filter.option === "author" || filter.option === "title";
   const selectInput = filter.option === "genre";
+  const dateInput = filter.option === "publicationDate";
 
   return (
     <>
@@ -42,6 +43,48 @@ const FilterValueInput = ({ filter, handleFilterValue }) => {
             </option>
           ))}
         </motion.select>
+      )}
+      {dateInput && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <label
+            htmlFor="fromDate"
+            className="text-white text-sm font-bold mr-1"
+          >
+            From:
+          </label>
+          <input
+            id="fromDate"
+            name="fromDate"
+            type="date"
+            pattern="\d{4}-\d{2}-\d{2}"
+            className="bg-gray-700 border border-gray-600 rounded-md shadow-sm py-1 px-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
+            value={filter.fromDate}
+            onChange={(e) =>
+              handleFilterValue({ ...filter, fromDate: e.target.value })
+            }
+          />
+          <label
+            htmlFor="toDate"
+            className="text-white text-sm font-bold ml-2 mr-1"
+          >
+            To:
+          </label>
+          <input
+            id="toDate"
+            name="toDate"
+            type="date"
+            pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+            className="bg-gray-700 border border-gray-600 rounded-md shadow-sm py-1 px-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
+            value={filter.toDate}
+            onChange={(e) =>
+              handleFilterValue({ ...filter, toDate: e.target.value })
+            }
+          />
+        </motion.div>
       )}
     </>
   );

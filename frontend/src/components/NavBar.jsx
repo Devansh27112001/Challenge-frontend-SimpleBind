@@ -15,7 +15,7 @@ const NavBar = () => {
           </Link>
 
           <Link
-            to={"/"}
+            to={"/add-book"}
             className="ml-auto mr-3 bg-emerald-700 hover:bg-emerald-600 text-white px-3 py-1 rounded-lg font-medium transition duration-300 ease-in-out flex items-center"
           >
             <BookMarkedIcon className="w-4 h-4 mr-1 sm:inline-block hidden" />

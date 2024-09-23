@@ -18,7 +18,7 @@ export const useBookStore = create((set, get) => ({
       }
       const res = await axiosInstance.post("/book", { ...newBook });
       toast.success("Book added successfully");
-      set - { loading: false };
+      set({ loading: false });
     } catch (error) {
       set({ loading: false });
       toast.error(error?.response?.data?.message);
@@ -39,9 +39,9 @@ export const useBookStore = create((set, get) => ({
   getFilteredBooks: async (filter) => {
     set({ loading: true });
     try {
-      if (filter.value === "" || filter.option === "") {
-        toast.error("Please select appropriate filter and value");
-        set({ loading: false });
+      if (filter.value === "" && filter.option === "") {
+        toast.error("Please select appropriate value.");
+        set({ books: get().allBooks, loading: false });
         return;
       }
       const res = await axiosInstance.post("/book/filter", filter);

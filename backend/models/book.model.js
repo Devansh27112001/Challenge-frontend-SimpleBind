@@ -22,8 +22,8 @@ const bookSchema = sequelize.define("Book", {
     allowNull: false,
     validate: {
       is: {
-        args: /^[a-zA-Z ]*$/,
-        msg: "Title of the book should only contain alphabets",
+        args: /^[A-Za-z0-9 ,:;!?.'"\-()]+$/,
+        msg: "The Title of the book entered is invalid",
       },
     },
   },
@@ -33,8 +33,8 @@ const bookSchema = sequelize.define("Book", {
     allowNull: false,
     validate: {
       is: {
-        args: /^[a-zA-Z ]*$/,
-        msg: "Auhtor of the book should only contain alphabets",
+        args: /^[A-Za-z ,.'\-]+$/,
+        msg: "The value for the Author field is invalid",
       },
     },
   },
@@ -42,9 +42,6 @@ const bookSchema = sequelize.define("Book", {
   genre: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      isAlpha: true,
-    },
   },
 
   publicationDate: {

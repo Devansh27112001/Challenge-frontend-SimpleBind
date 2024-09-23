@@ -3,11 +3,18 @@ import FilterValueInput from "./FilterValueInput";
 import { useBookStore } from "../stores/useBookStore";
 
 const FilterBy = () => {
-  const [filter, setFilter] = useState({ option: "", value: "" });
+  const [filter, setFilter] = useState({
+    option: "",
+    value: "",
+    fromDate: "",
+    toDate: "",
+  });
   const { getFilteredBooks } = useBookStore();
   const handleFilterSearch = async () => {
     await getFilteredBooks(filter);
-    setFilter({ option: "", value: "" });
+    console.log(filter);
+    setFilter({ option: "", value: "", fromDate: "", toDate: "" });
+    // console.log(filter);
   };
   return (
     <div className="max-w-full flex justify-between items-center mb-2">
@@ -21,6 +28,9 @@ const FilterBy = () => {
             setFilter({
               ...filter,
               option: e.target.value,
+              value: "",
+              fromDate: "",
+              toDate: "",
             });
           }}
           value={filter.option}

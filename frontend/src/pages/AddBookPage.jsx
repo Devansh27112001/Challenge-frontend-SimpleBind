@@ -24,6 +24,14 @@ const AddBookPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await addBook(formData);
+    setFormData({
+      entryId: "",
+      title: "",
+      author: "",
+      genre: "",
+      publicationDate: "",
+      isbnNumber: "",
+    });
   };
   return (
     <div className="relative z-50 flex flex-col justify-center mt-2 py-2 sm:px-6 lg:px-8">

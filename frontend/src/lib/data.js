@@ -23,4 +23,40 @@ export const genres = [
     id: 6,
     name: "Horror",
   },
+  {
+    id: 7,
+    name: "Dystopian",
+  },
+  {
+    id: 8,
+    name: "Memoir",
+  },
+  {
+    id: 9,
+    name: "Biography",
+  },
+  {
+    id: 10,
+    name: "Self Help",
+  },
+  {
+    id: 11,
+    name: "History",
+  },
+  {
+    id: 12,
+    name: "Adventure",
+  },
+  {
+    id: 13,
+    name: "Travel",
+  },
+  {
+    id: 14,
+    name: "Poetry",
+  },
+  {
+    id: 15,
+    name: "Health",
+  },
 ];
