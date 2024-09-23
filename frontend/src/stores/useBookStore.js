@@ -5,6 +5,7 @@ import { isIsbnNumber } from "../lib/helper";
 
 export const useBookStore = create((set, get) => ({
   books: [],
+  allBooks: [],
   loading: false,
 
   addBook: async (newBook) => {
@@ -17,7 +18,7 @@ export const useBookStore = create((set, get) => ({
       }
       const res = await axiosInstance.post("/book", { ...newBook });
       toast.success("Book added successfully");
-      set({ loading: false });
+      set - { loading: false };
     } catch (error) {
       set({ loading: false });
       toast.error(error?.response?.data?.message);
@@ -28,10 +29,26 @@ export const useBookStore = create((set, get) => ({
     set({ loading: true });
     try {
       const res = await axiosInstance.get("/book");
-      set({ books: res.data.books, loading: false });
+      set({ books: res.data.books, loading: false, allBooks: res.data.books });
     } catch (error) {
       set({ loading: false });
       toast.error("There was an error in fetching the books");
+    }
+  },
+
+  getFilteredBooks: async (filter) => {
+    set({ loading: true });
+    try {
+      if (filter.value === "" || filter.option === "") {
+        toast.error("Please select appropriate filter and value");
+        set({ loading: false });
+        return;
+      }
+      const res = await axiosInstance.post("/book/filter", filter);
+      set({ books: res.data.books, loading: false });
+    } catch (error) {
+      set({ loading: false });
+      toast.error("There was a problem in fetching the books");
     }
   },
 }));

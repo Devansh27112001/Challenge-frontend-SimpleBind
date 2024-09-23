@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import FilterValueInput from "./FilterValueInput";
+import { useBookStore } from "../stores/useBookStore";
 
 const FilterBy = () => {
   const [filter, setFilter] = useState({ option: "", value: "" });
-  const handleFilterSearch = () => {
-    console.log(filter);
+  const { getFilteredBooks } = useBookStore();
+  const handleFilterSearch = async () => {
+    await getFilteredBooks(filter);
+    setFilter({ option: "", value: "" });
   };
   return (
     <div className="max-w-full flex justify-between items-center mb-2">

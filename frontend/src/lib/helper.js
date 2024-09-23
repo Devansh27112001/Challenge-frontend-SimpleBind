@@ -9,6 +9,15 @@ export const getHeader = (data) => {
   return headers;
 };
 
+export const exportInJSON = (data) => {
+  const blob = new Blob([JSON.stringify(data, null, 2)], {
+    type: "application/json",
+  });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "books.json";
+  link.click();
+};
 export const isIsbnNumber = (number) => {
   let isbn = `${number}`;
   isbn = isbn.replace(/[\s-]/g, "");

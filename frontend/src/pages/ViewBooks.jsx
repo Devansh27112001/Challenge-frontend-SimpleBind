@@ -6,9 +6,10 @@ import BookItem from "../components/BookItem";
 import { useEffect } from "react";
 import { BookA, Pen, Album, Calendar, Hash, Frown } from "lucide-react";
 import DownloadData from "../components/DownloadData";
+import SelectDownloadType from "../components/SelectDownloadType";
 
 const ViewBooks = () => {
-  const { loading: isLoading, books, getAllBooks } = useBookStore();
+  const { loading: isLoading, books, getAllBooks, allBooks } = useBookStore();
   useEffect(() => {
     getAllBooks();
   }, []);
@@ -54,22 +55,22 @@ const ViewBooks = () => {
               <Spinner />
             </>
           )}
-          {books?.length === 0 && (
-            <div className="w-full mt-2 p-2 bg-gray-700 bg-opacity-25 rounded-md ">
+          {books?.length === 0 && !isLoading && (
+            <motion.div
+              className="w-full mt-2 p-2 bg-gray-700 bg-opacity-25 rounded-md"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               <Frown className="mb-1 sm:block hidden w-full" size={40} />
               <p className="text-emerald-500 text-4xl tracking-tight font-bold text-center">
                 No Books Found...
               </p>
-            </div>
+            </motion.div>
           )}
         </div>
-        {!isLoading && books?.length > 0 && (
-          <div className="w-full mt-2 p-2 bg-gray-700 bg-opacity-25 rounded-md flex items-center justify-between">
-            <p className="text-white text-sm uppercase tracking-tight font-bold">
-              Download Data in CSV-Format
-            </p>
-            <DownloadData data={books} />
-          </div>
+        {!isLoading && allBooks?.length > 0 && (
+          <SelectDownloadType data={allBooks} />
         )}
       </div>
     </motion.div>

@@ -1,3 +1,4 @@
+import { Sequelize } from "sequelize";
 import bookSchema from "../models/book.model.js";
 
 export const getAllBooks = async (req, res) => {
@@ -20,5 +21,20 @@ export const createBook = async (req, res) => {
       message:
         error?.errors[0]?.message || "There was an error creating the book",
     });
+  }
+};
+
+export const filterBooks = async (req, res) => {
+  try {
+    const { option, value } = req.body;
+    const books = await bookSchema.findAll({
+      where: {
+        [option]: value,
+      },
+    });
+
+    res.status(200).json({ status: "success", books });
+  } catch (error) {
+    res.status(400).json({ status: "failed", message: error });
   }
 };
