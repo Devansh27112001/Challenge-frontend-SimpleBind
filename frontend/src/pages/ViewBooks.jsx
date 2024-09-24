@@ -15,7 +15,7 @@ const ViewBooks = () => {
   }, []);
   return (
     <motion.div
-      className="relative z-50 shadow-md rounded-md max-w-5xl mx-auto bg-opacity-50 mt-20 overflow-hidden"
+      className="relative z-50 shadow-md rounded-md max-w-5xl px-1 mx-auto bg-opacity-50 mt-20 overflow-hidden"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -24,7 +24,7 @@ const ViewBooks = () => {
         Books List
       </h1>
       <FilterBy />
-      <div className="max-w-full bg-gray-700 bg-opacity-25 sm:px-4 px-2 py-2  space-y-3 rounded-sm">
+      <div className="max-w-full bg-gray-700 bg-opacity-25 sm:px-4 px-2 py-2 space-y-3 rounded-sm">
         <div className="sm:text-base bg-gray-700 text-xs font-medium text-white min-w-full flex items-center justify-between divide-x divide-emerald-100 pb-1 divide-opacity-15 bg-opacity-5 rounded-md border-b border-gray-700">
           <div className="uppercase w-full px-2 py-2 flex justify-center">
             <BookA className="w-6 h-6 mr-1 sm:inline-block hidden" />
