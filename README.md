@@ -16,7 +16,7 @@ database_name = Enter your database name.
 
 To run this project, you will need to add the following environment variables to your .env file in the backend folder.
 
-Create a .env file in the backend folder and add:
+Create a .env file in the backend folder and add:<br/>
 `PORT` = 5000
 
 `MYSQL_HOST`= localhost
