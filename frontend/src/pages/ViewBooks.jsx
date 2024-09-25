@@ -5,7 +5,6 @@ import Spinner from "../components/Spinner";
 import BookItem from "../components/BookItem";
 import { useEffect } from "react";
 import { BookA, Pen, Album, Calendar, Hash, Frown } from "lucide-react";
-import DownloadData from "../components/DownloadData";
 import SelectDownloadType from "../components/SelectDownloadType";
 
 const ViewBooks = () => {
